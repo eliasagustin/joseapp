@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" [routerLink]="['/home']">JosePinea</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      
+          <ng-container *ngIf="(user$ | async) === null; else logoutTemplate">
+            <ul class="navbar-nav me-auto mb-2">
+              <li class="nav-item">
+                <a class="nav-item nav-link active" [routerLink]="['/sign-in']">Sign-in</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-item nav-link" [routerLink]="['/sign-up']">Sign-up</a>
+              </li>
+          </ul>
+          </ng-container>
+          <ng-template #logoutTemplate>
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                  <a [routerLink]="['/sign-up']" (click)="onLogout()" class="nav-link">Logout</a>
+              </li>
+          </ul>
+          </ng-template>
+    </div>
+  </nav>
+<!-- 
+  <mat-drawer-container>
+    <mat-drawer #drawer mode="side" opened>
+      <h1>home</h1>
+      <mat-list role="list" class="side-bar">
+        <mat-list-item role="listitem">home</mat-list-item>
+        <mat-list-item role="listitem">sign-in</mat-list-item>
+        <mat-list-item role="listitem">sign-up</mat-list-item>
+      </mat-list>
+    </mat-drawer>
+  
+    <mat-drawer-content>
+      <div class="right-side">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" (click)="drawer.toggle()">reorder</mat-icon>
+        <h1>W3hubs</h1>
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container> -->
